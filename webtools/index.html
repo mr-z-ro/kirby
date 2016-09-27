@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Kirby Web</title>
+  <script src="jquery.min.js"></script>
+  <script src="annyang.min.js"></script>
+  <script>
+    if (annyang) {
+      // Let's define our first command. First the text we expect, and then the function it should call
+      var commands = {
+        'Hello': function() {
+          reply("How are you today?");
+        },
+        'Good': function() {
+          reply("Well that's good!");
+        }
+      };
+
+      // Add our commands to annyang
+      annyang.addCommands(commands);
+
+      // Start listening. You can call this here, or attach this call to an event, button, etc.
+      annyang.start();
+    }
+  </script>
+<head>
+<body>
+  <div id="frame" style="display: block; width: 100%; height: 100%; position:relative; background-color: #eee; border: 1px solid #ddd;"></div>
+  <script>
+    function reply(text) {
+      $("#frame").html("");
+      $("#frame").append($("<h1/>").html(text).css({"position": "absolute", "top": "33%", "left": "10%"}));
+    }
+    reply("Hello!");
+  </script>
+</body>
+</html>
